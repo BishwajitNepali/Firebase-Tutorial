@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mero Serofero</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="dialog_add_quote_hint">Enter a News Title</string>
+    <string name="dialog_add_movie_hint">Enter a News Content</string>
+    <string name="dialog_add_title">Compose News</string>
+    <string name="dialog_edit_title">Update News</string>
+</resources>

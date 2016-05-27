@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "916897915167",
+    "firebase_url": "https://mero-serofero.firebaseio.com",
+    "project_id": "mero-serofero",
+    "storage_bucket": "mero-serofero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916897915167:android:1dbd269cfd10a35f",
+        "android_client_info": {
+          "package_name": "com.thanglastudio.meroserofero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916897915167-uml1plaa235rsol407h3jffnrh820f1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK-TTqdW7q4Sc44l7gaB82X13uXTcWqjo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
