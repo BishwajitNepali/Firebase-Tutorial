@@ -10,12 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.thanglastudio.meroserofero.Model.HealthNews;
 import com.thanglastudio.meroserofero.Adapter.HealthNewsAdapter;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.menu);
+
         RecyclerView newsRecyclerview=(RecyclerView)findViewById(R.id.news_recyclerview);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -48,6 +52,25 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         newsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         newsRecyclerview.setHasFixedSize(true);
         newsRecyclerview.setAdapter(mAdapter);
+
+//        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP | ItemTouchHelper.DOWN) {
+//
+//            @Override
+//            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+//                //Remove swiped item from list and notify the RecyclerView
+//                Toast.makeText(MainActivity.this,"Swipe",Toast.LENGTH_SHORT).show();
+//
+//            }
+//        };
+//
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+//
+//        itemTouchHelper.attachToRecyclerView(newsRecyclerview);
 
     }
 

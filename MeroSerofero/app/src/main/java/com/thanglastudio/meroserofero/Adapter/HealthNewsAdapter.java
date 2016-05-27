@@ -2,11 +2,13 @@ package com.thanglastudio.meroserofero.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -29,11 +31,13 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("localnews");
     private static final String TAG = "HealthNewsAdapter";
+    Context con;
 
 
     public HealthNewsAdapter(Callback callback, Context context) {
         mCallback = callback;
         mHealthNewses = new ArrayList<>();
+        this.con=context;
 
         myRef.addChildEventListener( new NewsChildEventListener());
 
@@ -64,6 +68,8 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
                 return true;
             }
         });
+
+
     }
 
     public void remove(HealthNews healthNews) {
@@ -114,6 +120,7 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             healthNews.setKeys(dataSnapshot.getKey());
             mHealthNewses.add(0,healthNews);
             notifyDataSetChanged();
+           // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
 
         }
 
