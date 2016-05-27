@@ -1,12 +1,10 @@
-package com.thanglastudio.meroserofero;
+package com.thanglastudio.meroserofero.Activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +16,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import com.thanglastudio.meroserofero.Model.HealthNews;
+import com.thanglastudio.meroserofero.Adapter.HealthNewsAdapter;
+import com.thanglastudio.meroserofero.R;
 
 public class MainActivity extends AppCompatActivity implements HealthNewsAdapter.Callback {
 

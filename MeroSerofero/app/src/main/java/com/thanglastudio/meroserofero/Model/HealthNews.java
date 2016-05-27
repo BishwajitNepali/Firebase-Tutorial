@@ -1,4 +1,4 @@
-package com.thanglastudio.meroserofero;
+package com.thanglastudio.meroserofero.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
