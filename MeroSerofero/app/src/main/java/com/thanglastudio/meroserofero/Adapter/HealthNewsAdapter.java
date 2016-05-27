@@ -1,5 +1,6 @@
 package com.thanglastudio.meroserofero.Adapter;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -120,6 +121,7 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             healthNews.setKeys(dataSnapshot.getKey());
             mHealthNewses.add(0,healthNews);
             notifyDataSetChanged();
+
            // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
 
         }

@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         if (id == R.id.action_settings) {
             return true;
         }
+        else if(id ==R.id.search) {
+            return  true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
