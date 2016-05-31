@@ -78,12 +78,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onResume();
         showWelcomeScreen();
 
-//        if (prefs.getBoolean("firstrun", true)) {
-//            showWelcomeScreen();
-//            prefs.edit().putBoolean("firstrun", false).commit();
-//        } else {
-//            openNewActivity();
-//        }
+        if (prefs.getBoolean("firstrun", true)) {
+            showWelcomeScreen();
+            prefs.edit().putBoolean("firstrun", false).commit();
+        } else {
+            openNewActivity();
+        }
 
     }
 

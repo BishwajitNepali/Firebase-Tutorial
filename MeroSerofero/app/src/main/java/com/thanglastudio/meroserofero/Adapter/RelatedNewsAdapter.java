@@ -1,10 +1,13 @@
 package com.thanglastudio.meroserofero.Adapter;
 
+/**
+ * Created by admin on 5/31/16.
+ */
+
 import android.app.NotificationManager;
 import android.content.Context;
 
 import android.content.Intent;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
@@ -30,7 +33,7 @@ import java.util.List;
 /**
  * Created by Bisoo on 5/26/16.
  */
-public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.ViewHolder> {
+public class RelatedNewsAdapter extends RecyclerView.Adapter<RelatedNewsAdapter.ViewHolder> {
 
     private List<HealthNews> mHealthNewses;
     private Callback mCallback;
@@ -40,7 +43,7 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
     Context con;
 
 
-    public HealthNewsAdapter(Callback callback, Context context) {
+    public RelatedNewsAdapter(Callback callback, Context context) {
         mCallback = callback;
         mHealthNewses = new ArrayList<>();
         this.con=context;
@@ -70,7 +73,7 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //remove(mHealthNewses.get(position));
+                // remove(mHealthNewses.get(position));
                 return true;
             }
         });
@@ -78,18 +81,17 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             @Override
             public void onClick(View v) {
 
-            mCallback.onItemClick(healthNews);
+                mCallback.onItemClick(healthNews);
 
             }
         });
-
 
 
     }
 
     public void remove(HealthNews healthNews) {
         //TODO: Remove the next line(s) and use Firebase instead
-       myRef.child(healthNews.getKeys()).removeValue();
+        myRef.child(healthNews.getKeys()).removeValue();
     }
 
 
@@ -137,9 +139,7 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             mHealthNewses.add(0,healthNews);
             notifyDataSetChanged();
 
-
-
-           // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
 
         }
 
@@ -195,3 +195,4 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
         }
     }
 }
+

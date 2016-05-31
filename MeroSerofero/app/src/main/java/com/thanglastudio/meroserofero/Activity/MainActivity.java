@@ -2,6 +2,7 @@ package com.thanglastudio.meroserofero.Activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         newsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         newsRecyclerview.setHasFixedSize(true);
         newsRecyclerview.setAdapter(mAdapter);
+
 
 //        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP | ItemTouchHelper.DOWN) {
 //
@@ -107,6 +110,17 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
 
     }
 
+    @Override
+    public void onItemClick(HealthNews healthNews) {
+        Intent intent= new Intent(MainActivity.this,NewsDetailActivity.class);
+
+        String title=healthNews.getNews_title();
+        String content=healthNews.getNews_content();
+
+        intent.putExtra("title",title);
+        intent.putExtra("content",content);
+        startActivity(intent);
+    }
 
     private void showAddEditDialog(final HealthNews healthNews) {
         DialogFragment df = new DialogFragment() {
