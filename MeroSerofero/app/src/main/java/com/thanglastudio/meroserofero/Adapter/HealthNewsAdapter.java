@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -59,6 +60,10 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final HealthNews healthNews = mHealthNewses.get(position);
         holder.news_title.setText(healthNews.getNews_title());
+
+        Typeface face= Typeface.createFromAsset(con.getAssets(),"fonts/Astrud.ttf");
+
+        holder.news_title.setTypeface(face);
         holder.news_content.setText(healthNews.getNews_content());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

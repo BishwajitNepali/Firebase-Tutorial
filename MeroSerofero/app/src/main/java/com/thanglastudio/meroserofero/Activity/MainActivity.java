@@ -3,6 +3,7 @@ package com.thanglastudio.meroserofero.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -14,11 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thanglastudio.meroserofero.Model.HealthNews;
@@ -28,6 +31,8 @@ import com.thanglastudio.meroserofero.R;
 public class MainActivity extends AppCompatActivity implements HealthNewsAdapter.Callback {
 
     HealthNewsAdapter mAdapter;
+    TextView related_news;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.menu);
+
 
         RecyclerView newsRecyclerview=(RecyclerView)findViewById(R.id.news_recyclerview);
 

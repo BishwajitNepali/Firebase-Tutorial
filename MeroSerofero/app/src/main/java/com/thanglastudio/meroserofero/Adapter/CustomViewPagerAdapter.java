@@ -1,6 +1,7 @@
 package com.thanglastudio.meroserofero.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ public class CustomViewPagerAdapter extends PagerAdapter {
     public CustomViewPagerAdapter(Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
     @Override
@@ -45,6 +47,7 @@ public class CustomViewPagerAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         Picasso.with(mContext).load(mResources[position]).centerCrop().fit().into(imageView);
         container.addView(itemView);
+
 
         return itemView;
     }

@@ -2,11 +2,13 @@ package com.thanglastudio.meroserofero.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.thanglastudio.meroserofero.Adapter.CustomViewPagerAdapter;
 import com.thanglastudio.meroserofero.R;
@@ -20,11 +22,14 @@ public class WelcomeActivity extends AppCompatActivity {
     SharedPreferences prefs = null;
     ViewPager viewpager;
     CircleIndicator indicator;
+    TextView welcome_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        welcome_title=(TextView) findViewById(R.id.welcome_title);
+
         prefs = getSharedPreferences("com.thanglastudio.meroserofero", MODE_PRIVATE);
         viewpager = (ViewPager) findViewById(R.id.pager);
         indicator = (CircleIndicator) findViewById(R.id.indicator);
@@ -61,6 +66,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,12 +85,12 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onResume();
         showWelcomeScreen();
 
-        if (prefs.getBoolean("firstrun", true)) {
-            showWelcomeScreen();
-            prefs.edit().putBoolean("firstrun", false).commit();
-        } else {
-            openNewActivity();
-        }
+//        if (prefs.getBoolean("firstrun", true)) {
+//            showWelcomeScreen();
+//            prefs.edit().putBoolean("firstrun", false).commit();
+//        } else {
+//            openNewActivity();
+//        }
 
     }
 

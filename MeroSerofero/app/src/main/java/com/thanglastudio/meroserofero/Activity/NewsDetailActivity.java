@@ -1,6 +1,7 @@
 package com.thanglastudio.meroserofero.Activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +20,7 @@ import com.thanglastudio.meroserofero.R;
 public class NewsDetailActivity extends AppCompatActivity implements HealthNewsAdapter.Callback{
     TextView news_title;
     TextView news_content;
+    TextView related_news;
     HealthNewsAdapter mAdapter;
 
 
@@ -33,6 +35,7 @@ public class NewsDetailActivity extends AppCompatActivity implements HealthNewsA
 
         news_title=(TextView)findViewById(R.id.news_title);
         news_content=(TextView)findViewById(R.id.news_content);
+        related_news=(TextView)findViewById(R.id.related_news);
         mAdapter=new HealthNewsAdapter(this,this);
 
         relNewsRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
@@ -51,6 +54,8 @@ public class NewsDetailActivity extends AppCompatActivity implements HealthNewsA
         });
 
 
+//        Typeface face= Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Astrud.ttf");
+//        related_news.setTypeface(face);
 
         news_title.setText(title);
         news_content.setText(content);
