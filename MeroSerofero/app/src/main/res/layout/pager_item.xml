@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
-        android:text="Welcome to Mero Serofero"/>
+        android:text="गल्कोट सेरोफेरो"/>
     <TextView
         android:id="@+id/welcome_description"
         android:layout_width="wrap_content"

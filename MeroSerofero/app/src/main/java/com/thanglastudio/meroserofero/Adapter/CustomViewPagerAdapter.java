@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.thanglastudio.meroserofero.R;
@@ -22,6 +23,7 @@ public class CustomViewPagerAdapter extends PagerAdapter {
     int[] mResources = {
             R.drawable.beach,R.drawable.forest,
     };
+    String[]mFooterText={"हाम्रो सेरोफेरोमा भैरहेका सत्य तथ्य खबरहरुको संगालो ","सबैलाई सूचना र खबरको अधिकार बराबर "};
 
 
     public CustomViewPagerAdapter(Context context) {
@@ -45,7 +47,9 @@ public class CustomViewPagerAdapter extends PagerAdapter {
         View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        TextView footer = (TextView) itemView.findViewById(R.id.welcome_description);
         Picasso.with(mContext).load(mResources[position]).centerCrop().fit().into(imageView);
+        footer.setText(mFooterText[position]);
         container.addView(itemView);
 
 

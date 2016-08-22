@@ -15,4 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Add News Content" />
+
+    <EditText
+        android:id="@+id/dialog_news_image_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add News Content" />
 </LinearLayout>

@@ -8,17 +8,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class HealthNews {
     private String news_title;
     private String news_content;
+    private String news_image_url;
 
     @JsonIgnore
     private String keys;
 
-    public HealthNews(String news_title, String news_content) {
+    public HealthNews(String news_title, String news_content, String news_image_url) {
         this.news_title = news_title;
         this.news_content = news_content;
+        this.news_image_url = news_image_url;
     }
 
     public HealthNews() {
         //required empty constructor for Firebase Jackson
+    }
+
+    public String getNews_image_url() {
+        return news_image_url;
+    }
+
+    public void setNews_image_url(String news_image_url) {
+        this.news_image_url = news_image_url;
     }
 
     public String getKeys() {
@@ -48,5 +58,6 @@ public class HealthNews {
     public void setValues(HealthNews newHealthNews) {
         news_content=newHealthNews.news_content;
         news_title=newHealthNews.news_title;
+        news_image_url=newHealthNews.news_image_url;
     }
 }

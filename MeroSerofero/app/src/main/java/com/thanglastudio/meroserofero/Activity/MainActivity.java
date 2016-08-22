@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAddEditDialog(null);
+               // showAddEditDialog(null);
             }
         });
 
@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
         if (id == R.id.action_settings) {
             return true;
         }
-        else if(id ==R.id.search) {
-            return  true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -138,10 +135,12 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
                 builder.setView(view);
                 final EditText quoteEditText = (EditText) view.findViewById(R.id.dialog_news_title);
                 final EditText movieEditText = (EditText) view.findViewById(R.id.dialog_news_content);
+                final EditText imageEditText = (EditText) view.findViewById(R.id.dialog_news_image_url);
                 if (healthNews != null) {
                     // pre-populate
                     quoteEditText.setText(healthNews.getNews_title());
                     movieEditText.setText(healthNews.getNews_content());
+                    imageEditText.setText(healthNews.getNews_image_url());
 
                     TextWatcher textWatcher = new TextWatcher() {
                         @Override
@@ -158,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
                         public void afterTextChanged(Editable s) {
                             String quote = quoteEditText.getText().toString();
                             String movie = movieEditText.getText().toString();
+                            String image = imageEditText.getText().toString();
                             mAdapter.update(healthNews, quote, movie);
                         }
                     };
@@ -172,7 +172,9 @@ public class MainActivity extends AppCompatActivity implements HealthNewsAdapter
                         if (healthNews == null) {
                             String quote = quoteEditText.getText().toString();
                             String movie = movieEditText.getText().toString();
-                            mAdapter.add(new HealthNews(quote, movie));
+                            String image = imageEditText.getText().toString();
+
+                            mAdapter.add(new HealthNews(quote, movie,image));
                         }
                     }
                 });

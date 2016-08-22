@@ -10,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.thanglastudio.meroserofero.Adapter.HealthNewsAdapter;
 import com.thanglastudio.meroserofero.Model.HealthNews;
 import com.thanglastudio.meroserofero.R;
@@ -21,6 +23,8 @@ public class NewsDetailActivity extends AppCompatActivity implements HealthNewsA
     TextView news_title;
     TextView news_content;
     TextView related_news;
+    ImageView logo_desc;
+    private static final String  URl="http://res.cloudinary.com/bisoo/image/upload/v1465329736/Galkot%20News/galkot_bg.png";
     HealthNewsAdapter mAdapter;
 
 
@@ -36,6 +40,10 @@ public class NewsDetailActivity extends AppCompatActivity implements HealthNewsA
         news_title=(TextView)findViewById(R.id.news_title);
         news_content=(TextView)findViewById(R.id.news_content);
         related_news=(TextView)findViewById(R.id.related_news);
+        logo_desc=(ImageView)findViewById(R.id.logo_desc);
+        Picasso.with(getApplicationContext()).load(URl).into(logo_desc);
+
+
         mAdapter=new HealthNewsAdapter(this,this);
 
         relNewsRecyclerview.setLayoutManager(new GridLayoutManager(this,2));

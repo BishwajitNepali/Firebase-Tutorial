@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 import com.thanglastudio.meroserofero.Activity.NewsDetailActivity;
 import com.thanglastudio.meroserofero.Model.HealthNews;
 import com.thanglastudio.meroserofero.R;
@@ -44,9 +46,9 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
     public HealthNewsAdapter(Callback callback, Context context) {
         mCallback = callback;
         mHealthNewses = new ArrayList<>();
-        this.con=context;
+        this.con = context;
 
-        myRef.addChildEventListener( new NewsChildEventListener());
+        myRef.addChildEventListener(new NewsChildEventListener());
 
     }
 
@@ -60,11 +62,15 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final HealthNews healthNews = mHealthNewses.get(position);
         holder.news_title.setText(healthNews.getNews_title());
-
-        Typeface face= Typeface.createFromAsset(con.getAssets(),"fonts/Astrud.ttf");
-
-        holder.news_title.setTypeface(face);
         holder.news_content.setText(healthNews.getNews_content());
+        if (healthNews.getNews_image_url().isEmpty()) {
+
+            Picasso.with(con).load(R.drawable.newspaper_black).into(holder.news_image);
+
+        } else {
+            Picasso.with(con).load(healthNews.getNews_image_url()).into(holder.news_image);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +82,8 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             @Override
             public boolean onLongClick(View v) {
                 //remove(mHealthNewses.get(position));
+
+                Log.e("Key",mHealthNewses.get(position).getKeys()+"");
                 return true;
             }
         });
@@ -83,18 +91,17 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
             @Override
             public void onClick(View v) {
 
-            mCallback.onItemClick(healthNews);
+                mCallback.onItemClick(healthNews);
 
             }
         });
-
 
 
     }
 
     public void remove(HealthNews healthNews) {
         //TODO: Remove the next line(s) and use Firebase instead
-       myRef.child(healthNews.getKeys()).removeValue();
+        myRef.child(healthNews.getKeys()).removeValue();
     }
 
 
@@ -118,17 +125,20 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
 
     public interface Callback {
         public void onEdit(HealthNews healthNews);
-        public  void onItemClick(HealthNews healthNews);
+
+        public void onItemClick(HealthNews healthNews);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView news_title;
         private TextView news_content;
+        private ImageView news_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
             news_title = (TextView) itemView.findViewById(R.id.news_title);
             news_content = (TextView) itemView.findViewById(R.id.news_content);
+            news_image = (ImageView) itemView.findViewById(R.id.news_image);
         }
     }
 
@@ -137,25 +147,24 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
         @Override
         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-            HealthNews healthNews=dataSnapshot.getValue(HealthNews.class);
+            HealthNews healthNews = dataSnapshot.getValue(HealthNews.class);
             healthNews.setKeys(dataSnapshot.getKey());
-            mHealthNewses.add(0,healthNews);
+            mHealthNewses.add(0, healthNews);
             notifyDataSetChanged();
 
 
-
-           // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(con,"New update in news!!",Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            String key=dataSnapshot.getKey();
-            HealthNews newHealthNews=dataSnapshot.getValue(HealthNews.class);
-            for(HealthNews hn:mHealthNewses){
+            String key = dataSnapshot.getKey();
+            HealthNews newHealthNews = dataSnapshot.getValue(HealthNews.class);
+            for (HealthNews hn : mHealthNewses) {
 
-                if(hn.getKeys().equals(key)){
+                if (hn.getKeys().equals(key)) {
 
                     hn.setValues(newHealthNews);
 
@@ -170,10 +179,10 @@ public class HealthNewsAdapter extends RecyclerView.Adapter<HealthNewsAdapter.Vi
         @Override
         public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            String key= dataSnapshot.getKey();
-            for (HealthNews healthNews: mHealthNewses){
+            String key = dataSnapshot.getKey();
+            for (HealthNews healthNews : mHealthNewses) {
 
-                if(key.equals(healthNews.getKeys())){
+                if (key.equals(healthNews.getKeys())) {
 
                     mHealthNewses.remove(healthNews);
                     notifyDataSetChanged();
